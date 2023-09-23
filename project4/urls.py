@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import (
@@ -25,3 +26,9 @@ urlpatterns = [
     path('api/account/', include('account.urls')),
     path('api/polls/', include('polls.urls')),
 ]
+
+
+
+urlpatterns += i18n_patterns(
+    path('api/polls/', include('polls.urls'))
+)
